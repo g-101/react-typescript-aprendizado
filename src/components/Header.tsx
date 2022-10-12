@@ -7,7 +7,7 @@ export const Header = ({ name }: Props) => {
   return (
     <div>
       <h1>Hello World</h1>
-      <h2>Olá! {handlerName}</h2>
+      <h2>{handlerName}</h2>
       <hr />
     </div>
   );
