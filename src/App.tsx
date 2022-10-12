@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
+import { Button } from './components/Button';
 import './App.css';
 
 function App() {
-  let [name, setName] = useState('');
-
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+  let buttonText = 'Clique Aqui';
+  const clickHandler = (text: string) => {
+    alert('Ativou no App \n' + text);
   };
   return (
     <div className="App">
       <Header name={'Hello World!'} />
-      <label>Nome:</label>
-      <input type="text" value={name} onChange={inputHandler} />
-      <hr />
-      <p>Seu nome é: {name} </p>
+      {/* componente Button é o filho de App  */}
+      {/* Passando uma função que esta no pai para o filho por meio da prop clickFn */}
+      <Button text={buttonText} clickFn={clickHandler} />
     </div>
   );
 }
