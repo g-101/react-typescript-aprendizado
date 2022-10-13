@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ButtonStyled } from './ButtonStyled';
 
 export const Button = () => {
   const [show, setShow] = useState(false);
@@ -10,9 +11,9 @@ export const Button = () => {
     }
   };
   return (
-    <div>
-      <button onClick={clickHandler}>Clique Aqui</button>
+    <>
+      <ButtonStyled onClick={clickHandler}>Clique Aqui</ButtonStyled>
       {show && <p>Isso é um texto ipsum ipsum</p>}
-    </div>
+    </>
   );
 };
