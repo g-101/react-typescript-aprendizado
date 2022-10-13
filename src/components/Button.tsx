@@ -1,17 +1,18 @@
-type Props = {
-  text: string;
-  clickFn: (text: string) => void;
-};
+import { useState } from 'react';
 
-export const Button = ({ text, clickFn }: Props) => {
-  // Passando informação do filho para o pai,
-  // vai utilizar a função passada no prop clickFn do Pai
+export const Button = () => {
+  const [show, setShow] = useState(false);
   const clickHandler = () => {
-    clickFn('Do filho para o pai');
+    if (!show) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
   };
   return (
     <div>
-      <button onClick={clickHandler}>{text}</button>
+      <button onClick={clickHandler}>Clique Aqui</button>
+      {show && <p>Isso é um texto ipsum ipsum</p>}
     </div>
   );
 };
