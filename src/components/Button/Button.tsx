@@ -12,7 +12,12 @@ export const Button = () => {
   };
   return (
     <>
-      <ButtonStyled onClick={clickHandler}>Clique Aqui</ButtonStyled>
+      <ButtonStyled onClick={clickHandler} bg="#FF0000" small>
+        Small
+      </ButtonStyled>
+      <ButtonStyled onClick={clickHandler} bg="#FF0080">
+        Clique Aqui
+      </ButtonStyled>
       {show && <p>Isso é um texto ipsum ipsum</p>}
     </>
   );
