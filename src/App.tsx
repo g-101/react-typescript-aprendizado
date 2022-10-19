@@ -1,32 +1,31 @@
 import './App.css';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Item } from './components/Item';
+import { MovieTypes } from './types/MovieTypes';
 
 function App() {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [movies, setMovies] = useState<MovieTypes[]>([]);
+  const loadMoviesHandler = () => {
+    fetch('https://api.b7web.com.br/cinema/')
+      .then(res => {
+        return res.json();
+      })
+      .then(json => {
+        setMovies(json);
+      });
+  };
 
-  useEffect(() => {
-    // alert('executou');
-    setFullName(`${name}  ${lastName}`);
-  }, [name, lastName]);
-  /*o segundo parametro, no array, são onde fica os observers */
-  const nameChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-  const lastNameChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setLastName(event.target.value);
-  };
   return (
     <div className="App">
-      <input type="text" placeholder="DIGITE O NOME" value={name} onChange={nameChangeHandler} />
-      <input
-        type="text"
-        placeholder="DIGITE O SOBRENOME"
-        value={lastName}
-        onChange={lastNameChangeHandler}
-      />
-      <p>Nome completo: {fullName}</p>
+      <p>Total de filmes: {movies.length}</p>
+      <ul>
+        {movies.map((movie, index) => (
+          <Item key={index} data={movie} />
+        ))}
+      </ul>
+      <button className="btn" onClick={loadMoviesHandler}>
+        Carregar filmes
+      </button>
     </div>
   );
 }

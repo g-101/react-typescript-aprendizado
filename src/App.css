@@ -39,3 +39,8 @@
 .read-the-docs {
   color: #888;
 }
+.btn {
+  padding: 10px 20px;
+  background-color: cyan;
+  color: #000;
+}
