@@ -1,3 +1,4 @@
+import React from 'react';
 import './Item.css';
 type Props = {
   data: {
@@ -10,9 +11,9 @@ export const Item = ({ data }: Props) => {
   const { titulo, avatar } = data;
 
   return (
-    <div className="container">
+    <>
       <li className="movie-title">{titulo}</li>
       <img className="img" src={avatar} />
-    </div>
+    </>
   );
 };
