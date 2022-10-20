@@ -1,5 +1,5 @@
 .img {
-  display: inline-block;
+  display: block;
   width: 120px;
 }
 .movie-title {
