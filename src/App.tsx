@@ -1,53 +1,38 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { PostForm } from './components/PostForm';
+import { PostItem } from './components/PostItem';
 import { PostTypes } from './types/PostTypes';
+import { api } from './api';
 
 function App() {
   const [posts, setPosts] = useState<PostTypes[]>([]);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
 
   useEffect(() => {
     loadPostHandler();
   }, []);
 
-  const titleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-  };
-  const bodyChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setBody(event.target.value);
-  };
   const loadPostHandler = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-      const json = await response.json();
+      const answer = await api.getAllPosts();
       setLoading(false);
-      setPosts(json);
+      setPosts(answer);
     } catch (error) {
       setLoading(false);
+      alert('ocorreu um erro, tente novamente mais tarde');
       setPosts([]);
       console.error(error);
     }
   };
-  const clickHandler = async () => {
+  const createPostHandler = async (title: string, body: string) => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        body: JSON.stringify({
-          title: title,
-          body: body,
-          userID: 1,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const json = await response.json();
+      await api.createNewPost(1, title, body);
       alert('Post adicionado com sucesso');
-      console.log(json);
     } catch (error) {
+      alert('ocorreu um erro');
+
       console.error(error);
     }
   };
@@ -55,33 +40,14 @@ function App() {
   return (
     <div className="wrapper">
       {loading && <p className="title">Carregando...</p>}
+      <PostForm onAdd={createPostHandler} />
 
-      <fieldset>
-        <legend className="title">Adicionar novo post:</legend>
-        <input
-          className="inTitle"
-          type="text"
-          placeholder="Digite um titulo"
-          value={title}
-          onChange={titleChangeHandler}
-        />
-        <textarea value={body} onChange={bodyChangeHandler}></textarea>
-        <button className="btn" onClick={clickHandler}>
-          Adicionar
-        </button>
-      </fieldset>
       {!loading && posts.length > 0 && (
         <>
           <p className="title">Total de posts: {posts.length}</p>
 
           {posts.map((item, index) => (
-            <div key={index}>
-              <h4>{item.title}</h4>
-              <small>
-                #{item.id} - Usuario: {item.userId}
-              </small>
-              <p>{item.body}</p>
-            </div>
+            <PostItem dataPost={item} key={index} />
           ))}
         </>
       )}
