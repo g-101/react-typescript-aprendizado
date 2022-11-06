@@ -2,25 +2,3 @@
   width: 896px;
   margin: 0 auto;
 }
-
-.input-text {
-  width: 59%;
-  margin: 20px auto;
-  padding: 15px 30px;
-}
-.title {
-  font-size: 24px;
-  font-weight: bold;
-}
-div {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-button {
-  font-size: 16px;
-  padding: 10px 20px;
-  width: 10rem;
-  margin: 10px auto 0 10px;
-}
