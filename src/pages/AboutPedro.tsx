@@ -1,9 +1,8 @@
-export const About = () => {
+export const AboutPedro = () => {
   return (
     <div>
       Sobre:
       <ul>
-        <li>Bonieky</li>
         <li>Pedro</li>
       </ul>
     </div>
