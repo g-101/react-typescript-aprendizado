@@ -4,6 +4,7 @@ import { About } from './pages/About';
 import { AboutBonieky } from './pages/AboutBonieky';
 import { AboutPedro } from './pages/AboutPedro';
 import { Home } from './pages/Home';
+import { NotFound } from './pages/NotFound';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/sobre" element={<About />} />
           <Route path="/sobre/bonieky" element={<AboutBonieky />} />
           <Route path="/sobre/pedro" element={<AboutPedro />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <hr />
