@@ -3,7 +3,7 @@ export const AboutBonieky = () => {
     <div>
       Sobre:
       <ul>
-        <li>Bonieky</li>
+        <li>Pagina sobre Bonieky</li>
       </ul>
     </div>
   );

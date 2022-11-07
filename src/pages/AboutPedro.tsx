@@ -3,7 +3,7 @@ export const AboutPedro = () => {
     <div>
       Sobre:
       <ul>
-        <li>Pedro</li>
+        <li>Pagina sobre Pedro</li>
       </ul>
     </div>
   );
