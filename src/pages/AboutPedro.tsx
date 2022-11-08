@@ -1,10 +1,8 @@
 export const AboutPedro = () => {
   return (
     <div>
-      Sobre:
-      <ul>
-        <li>Pagina sobre Pedro</li>
-      </ul>
+      Sub rota de Sobre:
+      <h2>Pagina sobre Pedro</h2>
     </div>
   );
 };

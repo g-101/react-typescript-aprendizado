@@ -17,7 +17,7 @@ export const About = () => {
       Sobre:
       <ul>
         <li>
-          <Link to="/sobre/bonieky">Bonieky</Link>
+          <Link to="/admin">Admin</Link>
         </li>
         <li>
           <Link to="/sobre/pedro">Pedro</Link>
