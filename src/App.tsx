@@ -1,16 +1,20 @@
-import { MainRoutes } from './routes/MainRoutes';
+import { Routes, Route } from 'react-router-dom';
+import { SignUp } from './pages/SignUp';
+import { ShowData } from './pages/ShowData';
+import { NotFound } from './pages/NotFound';
+import { ContextProvider } from './contexts/Context';
 
 const App = () => {
   return (
-    <div>
-      <h1>Titulo do Site</h1>
+    <ContextProvider>
+      <h1>Titulo da Pagina</h1>
       <hr />
-      <div>
-        <MainRoutes />
-      </div>
-      <hr />
-      <footer>Todos os direitos reservados.</footer>
-    </div>
+      <Routes>
+        <Route path="/" element={<SignUp />} />
+        <Route path="/exibir" element={<ShowData />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </ContextProvider>
   );
 };
 

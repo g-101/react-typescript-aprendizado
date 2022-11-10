@@ -2,9 +2,9 @@ import { useRoutes } from 'react-router-dom';
 
 import { Home } from '../pages/Home';
 import { About } from '../pages/About';
-import { AboutPedro } from '../pages/AboutPedro';
+import { AboutPedro } from '../pages/ShowData';
 import { AboutItem } from '../pages/AboutItem';
-import { Admin } from '../pages/Admin';
+import { Admin } from '../pages/SignUp';
 import { RequireAuth } from '../RequireAuth';
 import { NotFound } from '../pages/NotFound';
 
